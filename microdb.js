@@ -7,6 +7,7 @@ var app = express();
 var router = express.Router();
 var fileDirectory = __dirname + '/public';
 
+
 router.get('/', function(req, res){
 	res.send('Hello World')
 });
@@ -19,9 +20,15 @@ fs.readdirSync(fileDirectory).forEach(function(file){
 				res.send(err);
 			}
 
-			content = JSON.parse(data)
+			content = JSON.parse(data);
+			answer = "";
 
-			answer = jsonql(req.query.query, content)
+			// if no query just send the whole object
+			if(Object.keys(req.query).length === 0 ) {
+				answer = jsonql("$", content);
+			}else {
+				answer = jsonql(req.query.query, content)
+			}
 
 			res.send(JSON.stringify(answer));
 		});
