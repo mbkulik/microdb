@@ -1,0 +1,8 @@
+{
+ "myNumber": 123.456,
+ "myString": "abcdef",
+ "myBool": true,
+ "myArray": [ "a", "b", "c", "d" ],
+ "myObject": { "id": 7 },
+ "myNull": null
+}
