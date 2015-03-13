@@ -1,0 +1,14 @@
+{
+	"name" : "microdb",
+	"description" : "Pre-Project for PencilCode Microdatabase GSoC 2015",
+	"dependencies" : 
+	{
+		"express" : "latest",
+		"jsonql" : "latest"
+	},
+	"repository" :
+	{
+		"type" : "git",
+		"url" : "http://github.com/mbkulik/microdb.git"
+	}
+}
