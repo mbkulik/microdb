@@ -1,4 +1,3 @@
-
 var fs = require('fs');
 var express = require('express');
 var jsonql = require('jsonql');
@@ -21,16 +20,13 @@ fs.readdirSync(fileDirectory).forEach(function(file){
 			}
 
 			content = JSON.parse(data);
-			answer = "";
 
-			// if no query just send the whole object
-			if(Object.keys(req.query).length === 0 ) {
-				answer = jsonql("$", content);
-			}else {
-				answer = jsonql(req.query.query, content)
-			}
+			queryString = '$';
 
-			res.send(JSON.stringify(answer));
+			if(Object.keys(req.query).length !== 0 ) 
+				queryString += '.' + req.query.query;
+
+			res.json(jsonql(queryString, content));
 		});
 	});
 });
