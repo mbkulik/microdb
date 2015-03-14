@@ -26,7 +26,11 @@ fs.readdirSync(fileDirectory).forEach(function(file){
 			if(Object.keys(req.query).length !== 0 ) 
 				queryString += '.' + req.query.query;
 
-			res.json(jsonql(queryString, content));
+			try {
+				res.json(jsonql(queryString, content));
+			}catch( e ) {
+				res.send(e.toString());
+			}
 		});
 	});
 });
